@@ -16,15 +16,15 @@ When **writing code** or **planning features that involve code**, use Context7 M
 1. Call `resolve-library-id` with the library name
 2. Call `query-docs` with the resolved ID to get up-to-date API docs and examples
 
-Use for: [list key libraries for this project, e.g., FastAPI, React, etc.]
+Use for: [list key libraries for this project]
 Do NOT use for: code review, debugging, non-code tasks, conversations.
 
 ## Expert Review References
 
 When reviewing code in this project, load the relevant expert reference doc BEFORE reviewing.
 
-### [Domain 1: e.g., "Signal Quality", "Data Visualization", "API Design"]
-**Expert: [Name]** — Read `~/agent-council/references/[filename].md`
+### [Domain 1: e.g., "Python Async", "FastAPI Backend", "React Frontend"]
+**Expert: [Name]** — Read `~/agent-council/references/[category]/[filename].md`
 Apply when reviewing: [list specific files/patterns this expert covers]
 
 Key questions [Name] would ask:
@@ -33,56 +33,55 @@ Key questions [Name] would ask:
 - [Question 3]
 
 ### [Domain 2]
-**Expert: [Name]** — Read `~/agent-council/references/[filename].md`
+**Expert: [Name]** — Read `~/agent-council/references/[category]/[filename].md`
 Apply when reviewing: [files/patterns]
 
 Key questions [Name] would ask:
 - [Question 1]
 - [Question 2]
 
-<!-- Add more expert sections as needed. Pick 2-4 experts per project.
-     Browse available experts: ls ~/agent-council/references/
+<!-- Pick 2-4 experts per project from ~/agent-council/references/
 
-     Product experts:
-     - ernest-chan.md       — Quantitative trading strategies, signal quality
-     - nassim-taleb.md      — Risk management, ruin avoidance, fat tails
-     - edward-tufte.md      — Data visualization, information design
-     - aswath-damodaran.md  — Financial valuation, scoring accuracy
-     - quality-ux.md        — UX patterns (Vitaly Friedman)
-     - quality-ui.md        — UI design (Karri Saarinen)
-     - quality-frontend.md  — React/frontend (Kent C. Dodds)
-     - quality-backend.md   — Backend quality (Matteo Collina)
-     - quality-postgres.md  — Database (Brandur Leach)
-     - quality-testing.md   — Test quality (Kent Beck)
-     - quality-llm.md       — LLM pipelines (Simon Willison)
-     - security.md          — Security (Troy Hunt)
-     - refactoring.md       — Architecture (Martin Fowler)
+     programming/          — Code quality experts
+       david-beazley.md      Python async/concurrency
+       sebastian-ramirez.md  FastAPI patterns
+       kent-dodds-react.md   React/Next.js/React Query
+       quality-frontend.md   Frontend (Kent C. Dodds, original Council)
+       quality-backend.md    Backend/Node.js (Matteo Collina)
+       quality-postgres.md   Postgres (Brandur Leach)
+       quality-testing.md    Testing (Kent Beck)
+       quality-llm.md        LLM pipelines (Simon Willison)
 
-     Marketing experts:
-     - rand-fishkin.md      — SEO, LLM search optimization
-     - sahil-bloom.md       — Finance content, Twitter/X strategy
-     - pieter-levels.md     — Solo founder growth, launches, communities
+     trading/              — Trading domain experts
+       ernest-chan.md         Signal quality, strategy, overfitting
+       nassim-taleb.md       Risk/ruin, position sizing, fat tails
+
+     financial/            — Financial data experts
+       edward-tufte.md       Data visualization, information design
+       aswath-damodaran.md   Valuation, scoring, financial metrics
+
+     marketing/            — Growth & marketing experts
+       rand-fishkin.md       SEO, LLM search optimization
+       sahil-bloom.md        Finance content, Twitter/X strategy
+       pieter-levels.md      Solo founder growth, launches
+
+     universal/            — Any project
+       security.md           Security (Troy Hunt)
+       refactoring.md        Architecture (Martin Fowler)
+       quality-ui.md         UI design (Karri Saarinen)
+       quality-ux.md         UX patterns (Vitaly Friedman)
 -->
 
 ## Conventions
 
-### [Category 1: e.g., "Backend", "Frontend", "Deployment"]
-- [Convention 1 — grows over time from code reviews]
-- [Convention 2]
+### [Category 1]
+- [Convention — grows over time from code reviews]
 
 ### [Category 2]
-- [Convention 1]
-
-<!-- Conventions grow organically:
-     After each review, add patterns that should be enforced.
-     Format: clear statement that a reviewer can check pass/fail.
-     Example: "All API endpoints return consistent error format: {detail: message}"
--->
+- [Convention]
 
 ## Known Issues
-- [Issue 1 — things to watch out for]
-- [Issue 2]
+- [Issue]
 
 ## What NOT to Do
-- [Safety rule 1]
-- [Safety rule 2]
+- [Safety rule]

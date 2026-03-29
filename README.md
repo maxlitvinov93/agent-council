@@ -1,96 +1,132 @@
 # Agent Council
 
-Forked from [Carmack Council](https://github.com/SamJHudson01/Carmack-Council) — a multi-agent development framework for Claude Code.
+Библиотека экспертных reference docs для Claude Code. Каждый doc — 20-25 принципов от реального эксперта, заточенных под конкретный домен.
 
-Extended with **domain-specific experts** for trading systems, financial data products, and marketing.
-
-## How It Works
-
-Each project gets a `CLAUDE.md` that references experts from this library. When Claude Code reviews code, it loads the relevant expert's reference doc and applies their principles. No special skills needed — CLAUDE.md is automatically loaded.
+## Как это работает
 
 ```
-Your Project/
-├── CLAUDE.md          ← "when reviewing signals, read ernest-chan.md"
-└── ...
+Твой проект/
+├── CLAUDE.md    ← ссылки на нужных экспертов
 
 ~/agent-council/
-└── references/        ← expert principle library (this repo)
+└── references/  ← библиотека принципов (этот репо)
 ```
 
-## Expert Library
+1. В проекте создаёшь `CLAUDE.md` (из шаблона `templates/CLAUDE.md.template`)
+2. Указываешь какие эксперты нужны и когда их вызывать
+3. Claude Code автоматически читает CLAUDE.md при старте сессии
+4. При ревью/написании кода — загружает reference doc нужного эксперта
 
-### Original Council (from Carmack Council)
+**Не нужны субагенты, скиллы или специальные команды.** Просто CLAUDE.md + reference docs.
 
-| Expert | Domain | Reference Doc |
-|--------|--------|--------------|
-| Troy Hunt | Security | `security.md` |
-| Martin Fowler | Refactoring / Structure | `refactoring.md` |
-| Kent C. Dodds | Frontend Quality | `quality-frontend.md` |
-| Matteo Collina | Backend Quality | `quality-backend.md` |
-| Brandur Leach | Postgres Quality | `quality-postgres.md` |
-| Simon Willison | LLM Pipeline Quality | `quality-llm.md` |
-| Karri Saarinen | UI Quality | `quality-ui.md` |
-| Vitaly Friedman | UX Quality | `quality-ux.md` |
-| Kent Beck | Test Quality | `quality-testing.md` |
-
-### Trading & Quantitative (NEW)
-
-| Expert | Domain | Reference Doc |
-|--------|--------|--------------|
-| Ernest Chan | Signal quality, strategy evaluation, overfitting | `ernest-chan.md` |
-| Nassim Taleb | Risk/ruin, position sizing, fat tails | `nassim-taleb.md` |
-
-### Financial Data (NEW)
-
-| Expert | Domain | Reference Doc |
-|--------|--------|--------------|
-| Edward Tufte | Data visualization, information design | `edward-tufte.md` |
-| Aswath Damodaran | Valuation, financial metrics, scoring accuracy | `aswath-damodaran.md` |
-
-### Marketing (NEW)
-
-| Expert | Domain | Reference Doc |
-|--------|--------|--------------|
-| Rand Fishkin | SEO, LLM search optimization, organic growth | `rand-fishkin.md` |
-| Sahil Bloom | Finance content creation, Twitter/X strategy | `sahil-bloom.md` |
-| Pieter Levels | Solo founder growth, launches, communities | `pieter-levels.md` |
-
-## Quick Start
-
-1. Clone this repo: `git clone git@github.com:maxlitvinov93/agent-council.git ~/agent-council`
-2. Copy the template: `cp ~/agent-council/templates/CLAUDE.md.template ./CLAUDE.md`
-3. Fill in your project context and pick 2-4 relevant experts
-4. Start working — Claude Code reads CLAUDE.md automatically
-
-## Project Setup Examples
-
-**Trading bot (Python):** Ernest Chan + Nassim Taleb
-**Stock screener (FastAPI + Next.js):** Edward Tufte + Aswath Damodaran + Vitaly Friedman + Troy Hunt
-**Marketing tasks:** Rand Fishkin + Sahil Bloom + Pieter Levels
-**Web app (generic):** Kent C. Dodds + Matteo Collina + Troy Hunt + Martin Fowler
-
-## Optimization vs Original Council
-
-Original Carmack Council spawns **10 parallel subagents** per review (~500k-1M tokens).
-
-Our approach: CLAUDE.md tells Claude **which 2-4 experts to apply** per task. Same quality, **5-7x fewer tokens**.
-
-| Approach | Tokens per review |
-|----------|------------------|
-| Carmack Council (10 agents) | ~500k-1M |
-| Agent Council (2-4 via CLAUDE.md) | ~80-200k |
-
-## File Structure
+## Структура
 
 ```
-references/              ← Expert principle libraries (20-25 principles each)
+references/
+├── programming/           # Код и архитектура
+│   ├── david-beazley.md       Python async, concurrency, event loop
+│   ├── sebastian-ramirez.md   FastAPI, Pydantic, dependency injection
+│   ├── kent-dodds-react.md    React, Next.js, React Query, components
+│   ├── quality-frontend.md    Frontend (Kent C. Dodds, tRPC/CSS Modules стек)
+│   ├── quality-backend.md     Backend/Node.js (Matteo Collina)
+│   ├── quality-postgres.md    PostgreSQL (Brandur Leach)
+│   ├── quality-testing.md     Testing (Kent Beck)
+│   └── quality-llm.md         LLM pipelines (Simon Willison)
+│
+├── trading/               # Трейдинг и quant
+│   ├── ernest-chan.md         Signal quality, overfitting, edge calculation
+│   └── nassim-taleb.md        Risk/ruin, position sizing, fat tails
+│
+├── financial/             # Финансовые данные
+│   ├── edward-tufte.md        Data visualization, charts, tables
+│   └── aswath-damodaran.md    Valuation, scoring, financial metrics
+│
+├── marketing/             # Рост и маркетинг
+│   ├── rand-fishkin.md        SEO, LLM search optimization
+│   ├── sahil-bloom.md         Finance content, Twitter/X strategy
+│   └── pieter-levels.md       Solo founder growth, launches, communities
+│
+├── universal/             # Любой проект
+│   ├── security.md            Security (Troy Hunt)
+│   ├── refactoring.md         Architecture (Martin Fowler)
+│   ├── quality-ui.md          UI design (Karri Saarinen)
+│   └── quality-ux.md          UX patterns (Vitaly Friedman)
+│
+└── spec-templates/        # Шаблоны спецификаций
+    ├── feature-spec.md
+    ├── product-spec.md
+    ├── small-change.md
+    ├── acceptance-criteria-guide.md
+    ├── boundary-examples.md
+    └── anti-patterns.md
+
 templates/
-  CLAUDE.md.template     ← Template for new projects
-skills/                  ← Original Carmack Council skills (optional)
-dist/                    ← Built .skill packages (optional)
+└── CLAUDE.md.template     # Шаблон для нового проекта
 ```
+
+## Быстрый старт
+
+```bash
+# 1. Клонируй (один раз)
+git clone git@github.com:maxlitvinov93/agent-council.git ~/agent-council
+
+# 2. В новом проекте — скопируй шаблон
+cp ~/agent-council/templates/CLAUDE.md.template ./CLAUDE.md
+
+# 3. Заполни: проект, стек, выбери 2-4 эксперта, список библиотек для Context7
+
+# 4. Работай — Claude Code читает CLAUDE.md автоматически
+```
+
+## Подбор экспертов по типу проекта
+
+| Тип проекта | Рекомендуемые эксперты |
+|-------------|----------------------|
+| **Trading bot (Python)** | David Beazley + Ernest Chan + Nassim Taleb |
+| **Stock screener (FastAPI + Next.js)** | Sebastián Ramírez + Kent C. Dodds + Edward Tufte + Aswath Damodaran |
+| **Web app (Node.js)** | Matteo Collina + Kent C. Dodds (original) + Troy Hunt + Martin Fowler |
+| **Web app (Python)** | Sebastián Ramírez + Kent Beck + Troy Hunt |
+| **LLM pipeline** | Simon Willison + Kent Beck + Troy Hunt |
+| **Marketing tasks** | Rand Fishkin + Sahil Bloom + Pieter Levels |
+
+## Формат reference doc
+
+Каждый файл — единый формат:
+
+```markdown
+# [Title] — [Expert Name]
+
+Philosophy: [Expert background]
+Stack context: [Relevant stack]
+
+## Principle 1: [Strong statement]
+
+*[Expert]: "[Quote]"*
+
+[Explanation]
+
+### What to check
+**[Sub-topic]**
+- [Concrete check item]
+- Severity: **P1/P2/P3**
+```
+
+**P1** = баг, уязвимость, потеря данных/денег — фиксить сейчас
+**P2** = tech debt который будет стоить дорого потом — фиксить скоро
+**P3** = clarity, polish, naming — по возможности
+
+## Добавление нового эксперта
+
+1. Создай файл в нужной категории (`references/[category]/[name].md`)
+2. Следуй формату выше: 20-25 пронумерованных принципов
+3. Каждый принцип: цитата + объяснение + "What to check" + severity
+4. Добавь эксперта в CLAUDE.md проектов где он нужен
+
+## Context7 MCP
+
+Для актуальных доков библиотек используется [Context7](https://context7.com) MCP сервер. Установлен глобально, вызывается автоматически при написании кода (правило в CLAUDE.md каждого проекта).
 
 ## Credits
 
-- Original framework: [SamJHudson01/Carmack-Council](https://github.com/SamJHudson01/Carmack-Council)
-- Expert personas inspired by real-world practitioners credited in each reference doc
+- Reference doc формат вдохновлён [Carmack Council](https://github.com/SamJHudson01/Carmack-Council)
+- Эксперты: реальные специалисты, принципы из их публикаций и книг
