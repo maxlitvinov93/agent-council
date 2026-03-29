@@ -1,0 +1,78 @@
+# [Project Name]
+
+## Project Overview
+[1-2 sentences: what the project does]
+
+**Stack:** [languages, frameworks, databases]
+**Codebase:** [size estimate, key metrics]
+
+## Key Files
+[List 5-10 most important files with one-line descriptions]
+
+## Expert Review References
+
+When reviewing code in this project, load the relevant expert reference doc BEFORE reviewing.
+
+### [Domain 1: e.g., "Signal Quality", "Data Visualization", "API Design"]
+**Expert: [Name]** — Read `~/agent-council/references/[filename].md`
+Apply when reviewing: [list specific files/patterns this expert covers]
+
+Key questions [Name] would ask:
+- [Question 1]
+- [Question 2]
+- [Question 3]
+
+### [Domain 2]
+**Expert: [Name]** — Read `~/agent-council/references/[filename].md`
+Apply when reviewing: [files/patterns]
+
+Key questions [Name] would ask:
+- [Question 1]
+- [Question 2]
+
+<!-- Add more expert sections as needed. Pick 2-4 experts per project.
+     Browse available experts: ls ~/agent-council/references/
+
+     Product experts:
+     - ernest-chan.md       — Quantitative trading strategies, signal quality
+     - nassim-taleb.md      — Risk management, ruin avoidance, fat tails
+     - edward-tufte.md      — Data visualization, information design
+     - aswath-damodaran.md  — Financial valuation, scoring accuracy
+     - quality-ux.md        — UX patterns (Vitaly Friedman)
+     - quality-ui.md        — UI design (Karri Saarinen)
+     - quality-frontend.md  — React/frontend (Kent C. Dodds)
+     - quality-backend.md   — Backend quality (Matteo Collina)
+     - quality-postgres.md  — Database (Brandur Leach)
+     - quality-testing.md   — Test quality (Kent Beck)
+     - quality-llm.md       — LLM pipelines (Simon Willison)
+     - security.md          — Security (Troy Hunt)
+     - refactoring.md       — Architecture (Martin Fowler)
+
+     Marketing experts:
+     - rand-fishkin.md      — SEO, LLM search optimization
+     - sahil-bloom.md       — Finance content, Twitter/X strategy
+     - pieter-levels.md     — Solo founder growth, launches, communities
+-->
+
+## Conventions
+
+### [Category 1: e.g., "Backend", "Frontend", "Deployment"]
+- [Convention 1 — grows over time from code reviews]
+- [Convention 2]
+
+### [Category 2]
+- [Convention 1]
+
+<!-- Conventions grow organically:
+     After each review, add patterns that should be enforced.
+     Format: clear statement that a reviewer can check pass/fail.
+     Example: "All API endpoints return consistent error format: {detail: message}"
+-->
+
+## Known Issues
+- [Issue 1 — things to watch out for]
+- [Issue 2]
+
+## What NOT to Do
+- [Safety rule 1]
+- [Safety rule 2]
