@@ -1,5 +1,5 @@
 ---
-name: review-async-beazley
+name: review-python-async-beazley
 description: Review Python async code (asyncio, websockets, event loop, background tasks) using David Beazley principles
 ---
 
