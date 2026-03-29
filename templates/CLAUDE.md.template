@@ -9,6 +9,16 @@
 ## Key Files
 [List 5-10 most important files with one-line descriptions]
 
+## Context7 — Library Documentation
+
+When **writing code** or **planning features that involve code**, use Context7 MCP to fetch current library docs BEFORE writing. Do not rely on training data for library APIs.
+
+1. Call `resolve-library-id` with the library name
+2. Call `query-docs` with the resolved ID to get up-to-date API docs and examples
+
+Use for: [list key libraries for this project, e.g., FastAPI, React, etc.]
+Do NOT use for: code review, debugging, non-code tasks, conversations.
+
 ## Expert Review References
 
 When reviewing code in this project, load the relevant expert reference doc BEFORE reviewing.
